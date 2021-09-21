@@ -1,7 +1,19 @@
 const Usuario = require("../models/Usuario");
 
 exports.crearUsuario = async (req, res) => {
+
+    const { email, password } = req.body;
+
   try {
+    // Revisando q el email sea unico
+    let usuarioEncontrado = await Usuario.findOne({ email });
+
+     
+    if (usuarioEncontrado) {
+        return res.status(400).json({ msg: 'El Usuario ya existe' });
+      }
+  
+
     let usuario;
 
     //nuevo usuario
