@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const usuarioRoutes = require('./routes/usuariosRoute');
 const memeRoutes = require('./routes/memesRoute');
+const authRoutes = require('./routes/authRoute');
 
 // crear el servidor
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 //importar rutas
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/memes', memeRoutes);
+app.use('/api/auth', authRoutes);
 
 // puerto y arranque del servidor
 app.listen(4000, () => {
